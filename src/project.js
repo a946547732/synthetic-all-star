@@ -455,7 +455,12 @@ window.__require = (function e(t, n, o) {
                 null != n.Instance && n.Instance.destroy(), (n.Instance = this);
               }),
               (t.prototype.Play = function (e, t, n) {
-                cc.audioEngine.play(this.audioClip[e], t, n);
+                console.log(11,e)
+                var audioObj = this.audioClip[e];
+                // audioObj.url = "res/audio/preview.mp3"
+                console.log('audioObj',audioObj)
+                //播放音频
+                cc.audioEngine.play(audioObj, t, n);
               }),
               (t.prototype.StopAll = function () {
                 cc.audioEngine.stopAllEffects();
@@ -2722,7 +2727,7 @@ window.__require = (function e(t, n, o) {
                 }
                 return e;
               }),
-              // 生成水果
+              // 创建生成水果
               (t.prototype.createOneFruit = function (e) {
                 var t = this,
                   n = cc.instantiate(this.fruitPre);
@@ -2760,6 +2765,7 @@ window.__require = (function e(t, n, o) {
                   })
                   .start();
               }),
+              //升级水果
               (t.prototype.createLevelUpFruit = function (e, t) {
                 var o = cc.instantiate(this.fruitPre);
                 (o.parent = this.fruitNode),
@@ -7494,20 +7500,26 @@ window.__require = (function e(t, n, o) {
                             i.default.Instance.createFruitSui(
                               o.fruitNumber,
                               n.node.position
-                            ),
-                              i.default.Instance.createFruitL(
-                                o.fruitNumber,
-                                n.node.position,
-                                n.node.width
-                              ),
-                              i.default.Instance.createLevelUpFruit(
-                                o.fruitNumber + 1,
-                                n.node.position
-                              ),
-                              (n.node.active = !1),
-                              (t.node.active = !1),
-                              n.node.destroy(),
-                              t.node.destroy();
+                            );
+                            i.default.Instance.createFruitL(
+                              o.fruitNumber,
+                              n.node.position,
+                              n.node.width
+                            );
+                            //调用升级
+                            i.default.Instance.createLevelUpFruit(
+                              o.fruitNumber + 1,
+                              n.node.position
+                            );
+                            //直接升到9级
+                            // i.default.Instance.createLevelUpFruit(
+                            //   9,
+                            //   n.node.position
+                            // );
+                            (n.node.active = !1),
+                            (t.node.active = !1),
+                            n.node.destroy(),
+                            t.node.destroy();
                           })
                           .start()))
                     : c == r &&
@@ -7542,12 +7554,12 @@ window.__require = (function e(t, n, o) {
                                 o.fruitNumber,
                                 n.node.position,
                                 n.node.width
-                              ),
-                              // +1 变 -1
-                              i.default.Instance.createLevelUpFruit(
-                                o.fruitNumber + 1,
-                                n.node.position
                               );
+                              // +1 变 -1
+                              // i.default.Instance.createLevelUpFruit(
+                              //   o.fruitNumber + 1,
+                              //   n.node.position
+                              // );
                             var e = cc
                               .find("Canvas/upEffectParent")
                               .getChildByName("daxigua");
