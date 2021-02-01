@@ -6,7 +6,7 @@
 var extraScore = 1;
 
 // 无敌模式：true 改为 false
-var wuDi = false;
+var wuDi = true;
 
 // 第一个水果：修改数字为 0-10
 var firstFruit = 0;

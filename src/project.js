@@ -4250,7 +4250,6 @@ window.__require = (function e(t, n, o) {
               o.publicGameBool || this.play();
           },
           play: function () {
-            console.log(1);
             var e = this;
             adBreak({
               type: "next",
