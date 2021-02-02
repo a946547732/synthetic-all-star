@@ -455,10 +455,10 @@ window.__require = (function e(t, n, o) {
                 null != n.Instance && n.Instance.destroy(), (n.Instance = this);
               }),
               (t.prototype.Play = function (e, t, n) {
-                console.log(11,e)
+                // console.log(e, t, n);
                 var audioObj = this.audioClip[e];
                 // audioObj.url = "res/audio/preview.mp3"
-                console.log('audioObj',audioObj)
+                console.log("audioObj", audioObj);
                 //播放音频
                 cc.audioEngine.play(audioObj, t, n);
               }),
@@ -3354,7 +3354,8 @@ window.__require = (function e(t, n, o) {
           i =
             (c(
               (o = {
-                URL: "http://www.wesane.com/h5service.php/Interface/services",
+                //请求
+                URL: "/h5service.php/Interface/services",
                 cacheList: null,
                 isBusy: null,
                 req: null,
@@ -4900,7 +4901,8 @@ window.__require = (function e(t, n, o) {
               },
               gameOverShowText: function (e, t) {
                 this.ajaxLoad(
-                  "http://www.wesane.com/admin.php/Gamescore/saveGamescore",
+                  //请求
+                  "/admin.php/Gamescore/saveGamescore",
                   "gameScore=" +
                     e +
                     "&gameId=" +
@@ -4911,11 +4913,12 @@ window.__require = (function e(t, n, o) {
                 );
               },
               gamePV_load: function () {
-                this.ajaxLoad(
-                  "http://www.wesane.com/admin.php/Activityshow/gamelogo",
-                  "gameID=" + this.gameHttpId,
-                  this.ajaxOnLogoResult
-                );
+                // this.ajaxLoad(
+                //   //请求
+                //   "/admin.php/Activityshow/gamelogo",
+                //   "gameID=" + this.gameHttpId,
+                //   this.ajaxOnLogoResult
+                // );
               },
               ajaxOnLogoResult: function () {},
               ajaxLoad: function (e, t, n) {
@@ -7458,13 +7461,14 @@ window.__require = (function e(t, n, o) {
                 var e = this.getNumberTime;
                 return this.getNumberTime++, (this.returnNumber = !0), e;
               }),
+              //启动
               (t.prototype.onBeginContact = function (e, t, n) {
                 var o = this;
                 if (
                   ("downwall" == n.node.group &&
                     ((t.node.parent = cc.find("Canvas/fruitNode")),
                     0 == this.wallColl &&
-                      (d.default.Instance.Play(5, !1, 1), this.wallColl++)),
+                      (d.default.Instance.Play(5, !1, 1), this.wallColl++)), //调用发出声音
                   "fruit" == n.node.group)
                 ) {
                   if (((this.endCtrl = !0), t.node.y < n.node.y)) return;
@@ -7517,9 +7521,9 @@ window.__require = (function e(t, n, o) {
                             //   n.node.position
                             // );
                             (n.node.active = !1),
-                            (t.node.active = !1),
-                            n.node.destroy(),
-                            t.node.destroy();
+                              (t.node.active = !1),
+                              n.node.destroy(),
+                              t.node.destroy();
                           })
                           .start()))
                     : c == r &&
@@ -7555,11 +7559,11 @@ window.__require = (function e(t, n, o) {
                                 n.node.position,
                                 n.node.width
                               );
-                              // +1 变 -1
-                              // i.default.Instance.createLevelUpFruit(
-                              //   o.fruitNumber + 1,
-                              //   n.node.position
-                              // );
+                            // +1 变 -1
+                            // i.default.Instance.createLevelUpFruit(
+                            //   o.fruitNumber + 1,
+                            //   n.node.position
+                            // );
                             var e = cc
                               .find("Canvas/upEffectParent")
                               .getChildByName("daxigua");
